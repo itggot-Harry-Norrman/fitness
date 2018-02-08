@@ -1,5 +1,7 @@
 class App < Sinatra::Base
 
+	enable :sessions
+
 	get('/') do
 		db = SQLite3::Database.new("db/db.db")
 		slim(:index, locals:{msg: session[:msg]})
@@ -37,7 +39,6 @@ class App < Sinatra::Base
 				redirect('/')
 			else
 				db_password = db_password[0][0]
-
 				password_digest =  db_password
 				password_digest = BCrypt::Password.new( password_digest )
 
@@ -58,11 +59,44 @@ class App < Sinatra::Base
 	get('/user') do
 		db = SQLite3::Database.new("db/db.db")
 		if session[:user_id]
-			notes = db.execute("SELECT content, id FROM notes WHERE user_id=?", session[:user_id])
-			slim(:user, locals:{user_dat: user_dat})
+			ovningar = db.execute("SELECT ovning, reps, sets, day, id FROM ovningar WHERE user_id=?", session[:user_id])
+			username = db.execute("SELECT user FROM user_data WHERE id=?", session[:user_id])
+			p ovningar
+			slim(:user, locals:{ovningar: ovningar, username:username})
+		else 
+			session[:msg] = "Login or register to access this page."
+			redirect('/')
+		end
+	end
+	post('/add_exercise') do
+		db = SQLite3::Database.new("db/db.db")
+		user_dat = params[:ovning]
+		reps = params[:reps]
+		sets = params[:sets]
+		day = params[:day]
+		db.execute("INSERT INTO ovningar ('ovning', 'reps', 'sets', 'day', 'user_id') VALUES (?,?,?,?,?)", [user_dat, reps, sets, day, session[:user_id]])
+		redirect('/user')
+	end
+	get('/delete_exercise/:id') do
+		db = SQLite3::Database.new("db/db.db")		
+		db.execute("DELETE FROM ovningar WHERE id=?", params[:id])
+		redirect('/user')
+	end
+	post('/logout') do
+		session[:user_id] = nil
+		redirect('/')
+	end
+	get('/main') do
+		db = SQLite3::Database.new("db/db.db")
+		if session[:user_id]
+			ovningar = db.execute("SELECT ovning, reps, sets, day, id FROM ovningar WHERE user_id=?", session[:user_id])
+			username = db.execute("SELECT user FROM user_data WHERE id=?", session[:user_id])
+			p ovningar
+			slim(:mainsite, locals:{ovningar: ovningar, username:username})
 		else 
 			session[:msg] = "Login or register to access this page."
 			redirect('/')
 		end
 	end
 end           
+

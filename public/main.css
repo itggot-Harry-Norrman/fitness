@@ -1,5 +1,141 @@
+body {
+    font-family: 'Raleway', sans-serif;
+    margin: 0;    
+    background-image: url("./img/farsan2.jpg");
+    background-size: 100vw, 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
 nav {
-    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 60px;
     width: 100vw;
-    background-color: hotpink;
+    color: white;
+}
+h1 {
+    margin: 0;
+}
+.index_pos {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    right: 0;
+    top: 35vh;
+}
+.index_form {
+    display: flex;
+    flex-direction: column;
+}
+.index_form input {
+    
+}
+.ovning {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: white;
+    border: solid white 2px;
+    width: 200px;
+    line-height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    transition: 0.3s;
+}
+.ovning:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: 0.3s;
+    transform: scale(1.1, 1.1)
+}
+a {
+    text-decoration: none;
+    color: white;
+}
+.scheme {
+    display: flex;
+    flex-direction: row;
+}
+.add_form {
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+input[type=text] {
+    background-color: rgba(0, 0, 0, 0);
+    border: solid white 2px;
+    width: 200px;
+    color: white;
+    line-height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+    transition: 0.3s;
+}
+input[type=text]:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    outline: none;
+    transition: 0.3s;
+}
+input[type=password] {
+    background-color: rgba(0, 0, 0, 0);
+    border: solid white 2px;
+    width: 200px;
+    color: white;
+    line-height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+}
+input[type=text]::-webkit-input-placeholder {
+    color: white;
+    text-align: center;
+}
+input[type=submit] {
+    background-color: rgba(255, 255, 255, 1);
+    border: solid white 2px;
+    width: 200px;
+    color: black;
+    line-height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+}
+input[type=radio] {
+    line-height: 3px;
+}
+.leftform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.days {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h3 {
+    color: white;
+}
+.dayrow {
+    display: flex;
+    flex-direction: row;
+}
+.day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
 }

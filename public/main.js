@@ -1,0 +1,2 @@
+$('div.ovning:empty').hide();
+

@@ -1,0 +1,77 @@
+nav 
+    h1 Fitness
+    h1 = username[0][0]
+    form action="/logout" method="POST"
+        input type="submit" value="Logout"
+form action="/add_exercise" method="POST" class="add_form"
+    .leftform
+        .exercise
+            input type="text" name="ovning" placeholder="Add an exercise"
+        .reps
+            input type="text" name="reps" placeholder="How many reps"
+        .reps
+            input type="text" name="sets" placeholder="How many sets"   
+    .day 
+        input type="radio" name="day" value="mon" Monday
+        input type="radio" name="day" value="tue" Tuesday   
+        input type="radio" name="day" value="wed" Wednesday   
+        input type="radio" name="day" value="thu" Thursday   
+        input type="radio" name="day" value="fri" Friday
+        input type="radio" name="day" value="sat" Saturday   
+        input type="radio" name="day" value="sun" Sunday                  
+    input type="submit" value="Add excercise to scheme"
+
+.days 
+    .dayrow
+        .day
+            h3 Monday
+            - ovningar.each do |ovning|
+                .ovning
+                    -if ovning[3] == "mon"
+                        = ovning[0] +" "+ ovning[1].to_s + "x" + ovning[2].to_s
+                        a href="/delete_exercise/#{ovning[4]}"  Delete
+        .day
+            h3 Tuesday
+            - ovningar.each do |ovning|
+                .ovning
+                    -if ovning[3] == "tue"
+                        = ovning[0] +" "+ ovning[1].to_s + "x" + ovning[2].to_s
+                        a href="/delete_exercise/#{ovning[4]}"  Delete
+        .day
+            h3 Wednesday
+            - ovningar.each do |ovning|
+                .ovning
+                    -if ovning[3] == "wed"
+                        = ovning[0] +" "+ ovning[1].to_s + "x" + ovning[2].to_s
+                        a href="/delete_exercise/#{ovning[4]}"  Delete           
+        .day
+            h3 Thursday
+            - ovningar.each do |ovning|
+                .ovning
+                    -if ovning[3] == "thu"
+                        = ovning[0] +" "+ ovning[1].to_s + "x" + ovning[2].to_s
+                        a href="/delete_exercise/#{ovning[4]}"  Delete            
+    .dayrow
+        .day
+            h3 Friday
+            - ovningar.each do |ovning|
+                .ovning
+                    -if ovning[3] == "fri"
+                        = ovning[0] +" "+ ovning[1].to_s + "x" + ovning[2].to_s
+                        a href="/delete_exercise/#{ovning[4]}"  Delete            
+        .day
+            h3 Saturday
+            - ovningar.each do |ovning|
+                .ovning
+                    -if ovning[3] == "sat"
+                        = ovning[0] +" "+ ovning[1].to_s + "x" + ovning[2].to_s
+                        a href="/delete_exercise/#{ovning[4]}"  Delete            
+        .day
+            h3 Sunday
+            - ovningar.each do |ovning|
+                .ovning
+                    -if ovning[3] == "sun"
+                        = ovning[0] +" "+ ovning[1].to_s + "x" + ovning[2].to_s
+                        a href="/delete_exercise/#{ovning[4]}"  Delete            
+    script src="jquery-3.2.1.min.js"
+    script src="main.js"
