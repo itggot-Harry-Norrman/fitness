@@ -1,6 +1,7 @@
 nav 
-    h1 Fitness
-    h1 = username[0][0]
+    .nav_title 
+        h1 Fitness
+    h1 = "Logged in as:" + " " + username[0][0].to_s
     form action="/logout" method="POST"
         input type="submit" value="Logout"
 form action="/add_exercise" method="POST" class="add_form"
@@ -12,13 +13,20 @@ form action="/add_exercise" method="POST" class="add_form"
         .reps
             input type="text" name="sets" placeholder="How many sets"   
     .day 
-        input type="radio" name="day" value="mon" Monday
-        input type="radio" name="day" value="tue" Tuesday   
-        input type="radio" name="day" value="wed" Wednesday   
-        input type="radio" name="day" value="thu" Thursday   
-        input type="radio" name="day" value="fri" Friday
-        input type="radio" name="day" value="sat" Saturday   
-        input type="radio" name="day" value="sun" Sunday                  
+        input type="radio" name="day" value="mon" 
+            label class="choice" Monday
+        input type="radio" name="day" value="tue" 
+            label class="choice" Tuesday   
+        input type="radio" name="day" value="wed" 
+            label class="choice" Wednesday   
+        input type="radio" name="day" value="thu" 
+            label class="choice" Thursday   
+        input type="radio" name="day" value="fri" 
+            label class="choice" Friday
+        input type="radio" name="day" value="sat" 
+            label class="choice" Saturday   
+        input type="radio" name="day" value="sun" 
+            label class="choice" Sunday                  
     input type="submit" value="Add excercise to scheme"
 
 .days 

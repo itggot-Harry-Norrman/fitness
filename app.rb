@@ -61,7 +61,6 @@ class App < Sinatra::Base
 		if session[:user_id]
 			ovningar = db.execute("SELECT ovning, reps, sets, day, id FROM ovningar WHERE user_id=?", session[:user_id])
 			username = db.execute("SELECT user FROM user_data WHERE id=?", session[:user_id])
-			p ovningar
 			slim(:user, locals:{ovningar: ovningar, username:username})
 		else 
 			session[:msg] = "Login or register to access this page."
@@ -91,7 +90,6 @@ class App < Sinatra::Base
 		if session[:user_id]
 			ovningar = db.execute("SELECT ovning, reps, sets, day, id FROM ovningar WHERE user_id=?", session[:user_id])
 			username = db.execute("SELECT user FROM user_data WHERE id=?", session[:user_id])
-			p ovningar
 			slim(:mainsite, locals:{ovningar: ovningar, username:username})
 		else 
 			session[:msg] = "Login or register to access this page."
